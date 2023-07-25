@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  # X-UI 服务
+  xui:
+    image: enwaiax/x-ui:alpha-zh
+    container_name: x-ui
+    volumes:
+      # X-UI 数据库配置挂载，将本地 db 目录挂载到容器内 /etc/x-ui/ 目录
+      - ./db:/etc/x-ui/
+      # X-UI 证书配置挂载，将本地 cert 目录挂载到容器内 /root/cert/ 目录
+      - ./cert:/root/cert/
+
+    restart: unless-stopped
+    network_mode: host
+
